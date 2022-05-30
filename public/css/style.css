@@ -1,0 +1,84 @@
+body {
+    min-width: fit-content;
+}
+
+.fields{
+    height: 50px;
+    padding-right: 25px;
+    /* margin: 33px; */
+}
+
+#headingHolder {
+    text-align: center;
+    color: forestgreen;
+    background-color: rgba(166, 255, 0, 0.247);
+}
+
+#addToTableButton {
+    width: 100%;
+}
+
+.container-fluid {
+    margin: auto;
+}
+
+
+#newItemForm {
+    margin: auto;
+    background-color: rgba(200, 221, 125, 0.671);
+    border-radius: 0.6rem;
+}
+
+#valueInputForm {
+    margin: auto;
+}
+
+#valueFetchedForm {
+    margin: auto;
+    font-style: italic;
+    font-weight: bold;
+    background-color: rgba(63, 126, 209, 0.205);
+    border-radius: 0.5rem;
+}
+
+#valueFetchedForm>tbody>tr>.fields {
+    padding-left: 10px;
+}
+
+#valueInputForm>input, #valueFetchedForm>input, table {
+    min-width: fit-content;
+}
+
+#valueInputForm>select {
+    margin: auto;
+}
+
+
+
+.timeScheduled {
+    background-color: lightgoldenrodyellow;
+    color: purple;
+    font-weight: 700;
+}
+
+.recipeGiven {
+    background-color: teal;
+    color: yellow;
+    font-weight: 600;
+}
+
+.ingredient {
+    background-color: rgb(80, 0, 209);
+    color: springgreen;
+    font-weight: 500;
+}
+
+.amountTaken {
+    background-color: blanchedalmond;
+}
+
+
+.newIngredient {
+    background-color: rgba(0, 255, 128, 0.342);
+    border-radius: 0.6rem;
+}

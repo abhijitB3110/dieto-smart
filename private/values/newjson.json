@@ -1,0 +1,30 @@
+[
+  {
+    "ingredientName": "Select an ingredient",
+    "protein": "0",
+    "fat": "0",
+    "carbohydrate": "0",
+    "energy": "0"
+  },
+  {
+    "ingredientName": "khabar1",
+    "protein": "43.3",
+    "fat": "3.3",
+    "carbohydrate": "52.1",
+    "energy": "5"
+  },
+  {
+    "ingredientName": "khabar2",
+    "protein": "12.9",
+    "fat": "45.9",
+    "carbohydrate": "78.1",
+    "energy": "23.5"
+  },
+  {
+    "ingredientName": "khabar3",
+    "protein": "11",
+    "fat": "12",
+    "carbohydrate": "14",
+    "energy": "15"
+  }
+]
