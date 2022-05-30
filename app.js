@@ -30,12 +30,12 @@ const fs = require('fs')
 const xlsx = require('xlsx')
 const wb = xlsx.readFile('private/values/newFile.xlsx')
 
-console.log(wb.SheetNames)
+// console.log(wb.SheetNames)
 
 const ws = wb.Sheets['foodValues']
-console.log(ws)
+// console.log(ws)
 
 const data = xlsx.utils.sheet_to_json(ws)
-console.log(data)
+// console.log(data)
 
 fs.writeFileSync('private/values/newjson.json', JSON.stringify(data, null, 2))

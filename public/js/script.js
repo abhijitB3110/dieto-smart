@@ -88,11 +88,13 @@ document.getElementById('addToTableButton').addEventListener("click", (e) => {
             energy[i].value = energyAmounts[i];
         }
     }
-
 });
 
+const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+const EXCEL_EXTENSION = '.xlsx';
+
 document.getElementById('download').addEventListener('click', (e) => {
-    let json = []
+    let jsonData = []
     for(var i=0; i<inserts; i++) {
         var entry = {
             "Timing": timeScheduled[i].value,
@@ -105,12 +107,29 @@ document.getElementById('download').addEventListener('click', (e) => {
             "Energy": energy[i].value
 
         }
-        json.push(entry)
+        jsonData.push(entry)
     }
-    console.log(json)
-
-
+    // console.log(jsonData)
+    downloadAsExcel(jsonData)
 })
+
+function downloadAsExcel(jsonData) {
+    const worksheet = XLSX.utils.json_to_sheet(jsonData)
+    const workbook = {
+        Sheets:{
+            'ICMR': worksheet
+        },
+        SheetNames: ['ICMR']
+    }
+    const excelBuffer = XLSX.write(workbook, {bookType:'xlsx', type: 'array'})
+    // console.log(excelBuffer)
+    saveAsExcel(excelBuffer, 'icmr')
+}
+
+function saveAsExcel(buffer, filename) {
+    const data = new Blob([buffer], {type:EXCEL_TYPE})
+    saveAs(data, filename + '_export_' + new Date().getTime() + EXCEL_EXTENSION)
+}
 
 fetch('values/newjson.json')
   .then(response => response.json())
