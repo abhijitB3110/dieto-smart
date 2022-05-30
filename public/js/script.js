@@ -33,15 +33,17 @@ let inserts = 0;
 
 function addNewRow() {
     table.innerHTML+= 
-                    '<tr class="row newIngredient"><td class="col-sm-2"><input type="text" class="timeScheduled col-sm-12"></td><td class="col-sm-2"><input type="text" class="recipeGiven col-sm-12"></td><td class="col-sm-2"><input type="text" class="ingredient col-sm-12"></td><td class="col-sm-2"><input type="" class="amountTaken col-sm-12"></td><td class="col-sm-1"><input type="number" class="protein col-sm-12"></td><td class="col-sm-1"><input type="text" class="carbohydrate col-sm-12"></td><td class="col-sm-1"><input type="text" class="fat col-sm-12"></td><td class="col-sm-1"><input type="text" class="energy col-sm-12"></td></tr>';
+                    '<tr class="row newIngredient"><td class="col-sm-2"><input type="text" class="timeScheduled col-sm-12"></td><td class="col-sm-2"><input type="text" class="recipeGiven col-sm-12"></td><td class="col-sm-2"><input type="text" class="ingredient col-sm-12"></td><td class="col-sm-2"><input type="text" class="amountTaken col-sm-12"></td><td class="col-sm-1"><input type="number" class="protein col-sm-12"></td><td class="col-sm-1"><input type="text" class="fat col-sm-12"></td><td class="col-sm-1"><input type="text" class="carbohydrate col-sm-12"></td><td class="col-sm-1"><input type="text" class="energy col-sm-12"></td></tr>';
+                    
+            // table.innerHTML +='<tr class="row newIngredient"><td class="col-sm-2"><input type="text" class="timeScheduled col-sm-12" value="'+time.value+'"></td><td class="col-sm-2"><input type="text" class="recipeGiven col-sm-12" value="'+recipeName.value+'">< td><td class="col-sm-2"><input type="text" class="ingredient col-sm-12" value="'+ ingredientNameField.value+ '"></td><td class="col-sm-2"><input type="text" class="amountTaken col-sm-12" value="'+ amount.value+'">< td><td class="col-sm-1"><input type="number" class="protein col-sm-12" value="'+ proteinField.value+'>"< td><td class="col-sm-1"><input type="text" class="fat col-sm-12" value="'+fatField.value+'">< td><td class="col-sm-1"><input type="text" class="carbohydrate col-sm-12" value="'+carbohydrateField.value+'">< td><td class="col-sm-1"><input type="text" class="energy col-sm-12" value="'+energyField.value+'">< td></tr>';
                     
     times[inserts] = time.value;
     recipeNames[inserts] = recipeName.value;
     ingredients[inserts] = ingredientNameField.value;
     amountTakens[inserts] = amount.value;
     proteinAmounts[inserts] = proteinField.value;
-    carbohydrateAmounts[inserts] = carbohydrateField.value;
     fatAmounts[inserts] = fatField.value;
+    carbohydrateAmounts[inserts] = carbohydrateField.value;
     energyAmounts[inserts] = energyField.value;
 
     timeScheduled[inserts].value = times[inserts];
@@ -53,27 +55,62 @@ function addNewRow() {
     fat[inserts].value = fatAmounts[inserts];
     energy[inserts].value = energyAmounts[inserts];
 
+    // timeScheduled[inserts].value = time.value;
+    // recipeGiven[inserts].value = recipeName.value;
+    // ingredient[inserts].value = ingredientNameField.value;
+    // amountTaken[inserts].value = amount.value;
+    // protein[inserts].value = proteinField.value;
+    // carbohydrate[inserts].value = carbohydrateField.value;
+    // fat[inserts].value = fatField.value;
+    // energy[inserts].value = energyField.value;
+
+
     inserts++;
 }
 
-form.addEventListener("submit", (e) => {
-    addNewRow();
-    e.preventDefault();
-    time.value = null;
-    recipeName.value = null;
-    document.getElementById('tableView').style.display = null;
-    for(var i=0; i<inserts; i++) {
-        timeScheduled[i].value = times[i];
-        recipeGiven[i].value = recipeNames[i];
-        ingredient[i].value = ingredients[i];
-        amountTaken[i].value = amountTakens[i];
-        protein[i].value = proteinAmounts[i];
-        carbohydrate[i].value = carbohydrateAmounts[i];
-        fat[i].value = fatAmounts[i];
-        energy[i].value = energyAmounts[i];
+document.getElementById('addToTableButton').addEventListener("click", (e) => {
+    if(ingredientNameField.value !== '') {
+        addNewRow();
+        e.preventDefault();
+        time.value = null;
+        recipeName.value = null;
+        document.getElementById('tableView').style.display = null;
+        document.getElementById('download').style.display = null;
+        ingredientNameField.value = null;
+        for(var i=0; i<inserts; i++) {
+            timeScheduled[i].value = times[i];
+            recipeGiven[i].value = recipeNames[i];
+            ingredient[i].value = ingredients[i];
+            amountTaken[i].value = amountTakens[i];
+            protein[i].value = proteinAmounts[i];
+            carbohydrate[i].value = carbohydrateAmounts[i];
+            fat[i].value = fatAmounts[i];
+            energy[i].value = energyAmounts[i];
+        }
     }
 
 });
+
+document.getElementById('download').addEventListener('click', (e) => {
+    let json = []
+    for(var i=0; i<inserts; i++) {
+        var entry = {
+            "Timing": timeScheduled[i].value,
+            "Menu": recipeGiven[i].value,
+            "Ingredients": ingredient[i].value,
+            "Amount": amountTaken[i].value,
+            "Protein": protein[i].value,
+            "Fat": fat[i].value,
+            "Carbohydrate": carbohydrate[i].value,
+            "Energy": energy[i].value
+
+        }
+        json.push(entry)
+    }
+    console.log(json)
+
+
+})
 
 fetch('values/newjson.json')
   .then(response => response.json())
@@ -81,7 +118,7 @@ fetch('values/newjson.json')
   .catch( err => console.log(err));
 
 function presentData(data) {
-    console.log(data)
+    // console.log(data)
     for (var op = 0; op < data.length; op++) {
         ingredientSelect.innerHTML += '<option value=' + op + '>' + data[op].ingredientName + '</option>';
     }

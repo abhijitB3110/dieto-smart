@@ -10,7 +10,6 @@
         <div class="pt-2 pb-2" id="headingHolder">
             <h1 class="display-3">Dieto-smart</h1>
         </div>
-        <form id="form" target="#"> 
             <div class="row">
                 <div class="container col-m-12 col-lg-6 p-5">
                     <table id="valueInputForm">
@@ -43,12 +42,12 @@
                             <td class="fields"> <input type="text" id="proteinAmount" placeholder="0.0" disabled> </td>
                         </tr>
                         <tr>
-                            <td class="fields"> <label for="carbohydrate">Carbohydrate</label> </td>
-                            <td class="fields"> <input type="text" id="carbohydrateAmount" placeholder="0.0" disabled> </td>
-                        </tr>
-                        <tr>
                             <td class="fields"> <label for="fat">Fat</label> </td>
                             <td class="fields"> <input type="text" id="fatAmount" placeholder="0.0" disabled> </td>
+                        </tr>
+                        <tr>
+                            <td class="fields"> <label for="carbohydrate">Carbohydrate</label> </td>
+                            <td class="fields"> <input type="text" id="carbohydrateAmount" placeholder="0.0" disabled> </td>
                         </tr>
                         <tr>
                             <td class="fields"> <label for="energy">Energy</label> </td>
@@ -57,29 +56,30 @@
                     </table>
                 </div>
             </div>
-            <button class="btn btn-success" id="addToTableButton" type="submit">
+            <button class="btn btn-success" id="addToTableButton">
                 Add to table
             </button>
-        </form>
     </div>
     <br>
     <div class="container">
         <div>
             <table class="table" id="tableView" style="display: none;">
-                <!-- <thead>
-                    <th class="row">
-                        <td class="col-sm-5">Ingredient Name</td>
-                        <td class="col-sm-3">Amount</td>
+                    <tr class="row">
+                        <td class="col-sm-2">Timing</td>
+                        <td class="col-sm-2">Menu</td>
+                        <td class="col-sm-2">Ingredients</td>
+                        <td class="col-sm-2">Amount</td>
                         <td class="col-sm-1">Protein</td>
-                        <td class="col-sm-1">Carbohydrate</td>
                         <td class="col-sm-1">Fat</td>
+                        <td class="col-sm-1">Carbohydrate</td>
                         <td class="col-sm-1">Energy</td>
-                    </th>
-                </thead> -->
+                    </tr>
                 <tbody id="table">
 
                 </tbody>
             </table>
+
+            <button class="btn btn-success" id="download" style="display: none;">Download XLSX</button>
         </div>
     </div>
 
