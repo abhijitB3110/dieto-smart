@@ -1,5 +1,7 @@
 body {
     min-width: fit-content;
+    font-family: 'Philosopher', sans-serif;
+    font-size: 1.12rem;
 }
 
 .fields{
@@ -14,8 +16,18 @@ body {
     background-color: rgba(166, 255, 0, 0.247);
 }
 
+.display-3 {
+    font-family: 'Indie Flower', cursive;
+}
+
+#logo {
+    width: 100px;
+    height: auto;
+}
+
 #addToTableButton {
     width: 100%;
+    box-shadow: none;
 }
 
 .container-fluid {
@@ -53,32 +65,34 @@ body {
     margin: auto;
 }
 
-
-
 .timeScheduled {
-    background-color: lightgoldenrodyellow;
+    background-color: yellow;
+    color: teal;
+    font-weight: 600;
+}
+
+.recipeGiven {
+    background-color: rgb(164, 237, 240);
     color: purple;
     font-weight: 700;
 }
 
-.recipeGiven {
-    background-color: teal;
-    color: yellow;
-    font-weight: 600;
-}
-
 .ingredient {
-    background-color: rgb(80, 0, 209);
-    color: springgreen;
+    background-color: blanchedalmond;
+    color: rgb(26, 85, 56);
     font-weight: 500;
 }
 
 .amountTaken {
-    background-color: blanchedalmond;
+    background-color:  lightgoldenrodyellow;
 }
 
 
 .newIngredient {
-    background-color: rgba(0, 255, 128, 0.342);
+    background-color: rgba(8, 163, 86, 0.342);
     border-radius: 0.6rem;
+}
+
+#download {
+    background-color: rgb(6, 177, 134);
 }
