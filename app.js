@@ -26,22 +26,6 @@ app.listen(port, (error) => {
 // 'use strict';
 const excelToJson = require('convert-excel-to-json');
 const fs = require('fs')
-
-// const result = excelToJson({
-//     source: fs.readFileSync('private/values/newFile.xlsx') // fs.readFileSync return a Buffer
-// })
-
-// const result = excelToJson({
-//     sourceFile: ('private/values/newFile.xlsx'),
-//     sheets: ['Sheet1'],
-//     columns: {
-//         A: '{{A1}}',
-//         B: '{{B1}}',
-//         C: '{{C1}}'
-//     },
-// });
-
-// console.log(result.Sheet1);
     
 const xlsx = require('xlsx')
 const wb = xlsx.readFile('private/values/newFile.xlsx')
