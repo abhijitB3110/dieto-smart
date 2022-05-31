@@ -82,10 +82,32 @@ document.getElementById('addToTableButton').addEventListener("click", (e) => {
             recipeGiven[i].value = recipeNames[i];
             ingredient[i].value = ingredients[i];
             amountTaken[i].value = amountTakens[i];
-            protein[i].value = proteinAmounts[i];
-            carbohydrate[i].value = carbohydrateAmounts[i];
-            fat[i].value = fatAmounts[i];
-            energy[i].value = energyAmounts[i];
+            if(proteinAmounts[i] === '0') 
+                protein[i].value = '-';
+            else
+                protein[i].value = proteinAmounts[i];
+
+            if(carbohydrateAmounts[i] === '0') 
+                carbohydrate[i].value = '-';
+            else
+                carbohydrate[i].value = carbohydrateAmounts[i];
+
+            if(fatAmounts[i] === '0') 
+                fat[i].value = '-';
+            else
+                fat[i].value = fatAmounts[i];
+
+            if(energyAmounts[i] === '0') 
+                energy[i].value = '-';
+            else
+                energy[i].value = energyAmounts[i];
+
+            
+
+
+            // carbohydrate[i].value = carbohydrateAmounts[i];
+            // fat[i].value = fatAmounts[i];
+            // energy[i].value = energyAmounts[i];
         }
     }
 });
